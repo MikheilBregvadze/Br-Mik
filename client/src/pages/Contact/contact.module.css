@@ -1,0 +1,107 @@
+.content {
+    display: flex;
+    padding: 40px 0 100px 0;
+    align-items: flex-end;
+    justify-content: space-between;
+    border-top: 2px solid rgb(73,73,73);
+}
+
+.informationBoard * {
+    font-weight: normal;
+    color: var(--text-color);
+    font-family: 'Spinnaker-Regular';
+}
+
+.informationBoard h2 {
+    font-size: 24px;
+}
+
+.informationBoard h4 {
+    font-size: 19px;
+    padding: 20px 0;
+}
+
+.borderTop {
+    margin-top: 70px;
+    position: relative;
+}
+
+.borderTop:after {
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 2px;
+    left: 0;
+    top: -25px;
+    background-color: rgb(73,73,73);
+}
+
+.informationBoard h6 {
+    font-size: 16px;
+    margin-bottom: 3px;
+}
+
+.formGroup {
+    width: 318px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.inputGroup {
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+.inputGroup textarea,
+.inputGroup input {
+    width: 100%;
+    height: 30px;
+    font-size: 15px;
+    font-weight: bold;
+    padding-left: 20px;
+    background: transparent;
+    border: 1px solid rgb(116 98 98);
+    font-family: 'Spinnaker-Regular';
+}
+
+.inputGroup textarea {
+    height: 100px;
+    padding: 10px 0 0 20px;
+}
+
+.inputGroup textarea:focus,
+.inputGroup textarea:hover,
+.inputGroup input:focus,
+.inputGroup input:hover {
+    border: 3px solid rgb(116 98 98);
+}
+
+.inputGroup textarea::placeholder,
+.inputGroup input::placeholder {
+    color: #000;
+    font-size: 13px;
+    letter-spacing: 1px;
+    font-family: 'Light';
+    color: var(--text-color);
+}
+
+.button {
+    width: 137px;
+    height: 30px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 15px;
+    line-height: 30px;
+    text-align: center;
+    letter-spacing: 1px;
+    border: 2px solid #494949;
+    background-color: #494949;
+    transition: background-color .3s linear;
+    font-family: 'Spinnaker-Regular';
+}
+
+.button:hover {
+    color: #494949;
+    background-color: transparent;
+}

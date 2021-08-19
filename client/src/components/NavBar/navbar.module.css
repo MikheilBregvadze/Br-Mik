@@ -1,0 +1,44 @@
+.contentBottom {
+    position: relative;
+    width: 100%;
+    height: fit-content;
+    padding-bottom: 20px;
+}
+
+.bearIcon {
+    position: absolute;
+    top: -45px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    pointer-events: none;
+}
+
+.title {
+    font-size: 46px;
+    text-align: center;
+    color: var(--text-color);
+    font-family: 'Amatic';
+    padding: 82px 0 40px 0;
+}
+
+.navigation ul {
+    display: flex;
+    justify-content: space-around;
+}
+
+.navigation ul li {
+    list-style: none;
+}
+
+.navigation ul li a {
+    font-weight: bold;
+    text-transform: uppercase;
+    color: var(--text-color);
+    text-decoration: none;
+    transition: opacity .1s linear;
+}
+.navigation ul li a:hover,
+.active {
+    opacity: 0.6;
+}

@@ -1,0 +1,9 @@
+.title {
+    font-size: 28px;
+    text-align: center;
+    font-weight: normal;
+    margin: 100px 0 40px 0;
+    color: var(--text-color);
+    text-transform: uppercase;
+    font-family: 'Spinnaker-Regular';
+}

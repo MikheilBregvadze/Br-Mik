@@ -1,0 +1,71 @@
+:root {
+  --text-color: rgb(73,73,73);
+}
+
+@font-face {
+  font-family: 'Spinnaker-Regular';
+  src: local('Spinnaker-Regular'), url('./assets/fonts/Spinnaker-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Light';
+  src: local('light'), url('./assets/fonts/light.woff');
+}
+
+@font-face {
+  font-family: 'Amatic';
+  src: local('Amatic'), url('./assets/fonts/amatic.woff2');
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Courier New', Courier, monospace;
+  background-color: rgb(252 249 248);
+}
+
+section {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(236,235,235);
+  /*background: url("./assets/images/background.png") repeat center;*/
+}
+
+section:before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+  background-image: url("./assets/images/background.png");
+  background-repeat: repeat;
+  background-attachment: fixed;
+}
+
+.container {
+  /*width: calc(100% - 184px);*/
+  width: 980px;
+  margin: auto;
+}
+
+input {
+  width: 100%;
+}
+
+.errorMessage {
+  display: block;
+  padding-top: 4px;
+  color: #ff3d3d;
+  text-align: left;
+  font-size: 12px;
+}
+
+.errorInput {
+  border-bottom: 1px solid #ff3d3d !important;
+}

@@ -1,0 +1,39 @@
+.content {
+    display: flex;
+    justify-content: space-between;
+    border-top: 2px solid rgb(73,73,73);
+    padding-top: 40px;
+}
+
+.title {
+    font-size: 24px;
+    letter-spacing: 2px;
+    font-weight: normal;
+    padding: 0 0 20px 0;
+    color: var(--text-color);
+    text-transform: uppercase;
+    font-family: 'Spinnaker-Regular';
+}
+
+.about {
+    width: calc(100% - 495px);
+}
+
+.about h4 {
+    font-size: 19px;
+    font-weight: normal;
+    padding-bottom: 15px;
+    color: var(--text-color);
+    font-family: 'Spinnaker-Regular';
+}
+
+.about p {
+    font-size: 14px;
+    font-weight: normal;
+    font-family: 'Light';
+    color: var(--text-color);
+}
+
+.background {
+    width: 447px;
+}

@@ -1,0 +1,61 @@
+.content {
+    display: flex;
+    height: 66px;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 16px;
+    font-family: 'Spinnaker-Regular';
+}
+
+.contentLeft {
+    color: rgb(73 73 73);
+}
+
+.contentRight {
+    display: flex;
+}
+
+.header {
+    position: relative;
+    background-color: rgb(252 249 248);
+}
+
+.content {
+    display: flex;
+}
+
+.cartParent,
+.loginParent {
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    font-family: Light;
+}
+
+.loginParent {
+    cursor: pointer;
+    color: rgb(196, 88, 88);
+}
+
+.loginParent:hover span {
+    opacity: .6;
+}
+
+.loginParent span {
+    margin: 0 25px 0 10px;
+}
+
+.cartParent {
+    position: relative;
+}
+
+.cartCount {
+    width: 20px;
+    position: absolute;
+    color: #FCF9F8;
+    text-align: center;
+    font-size: 14px;
+    left: 3px;
+    top: 19px;
+}
+
