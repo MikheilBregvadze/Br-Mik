@@ -1,49 +1,20 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import HomePage from "./pages/HomePage/homePage";
-import Header from "./components/Header";
+import Header from "./pages/Layout/Header";
 import NavBar from "./components/NavBar";
-import Footer from "./components/Footer";
+import Footer from "./pages/Layout/Footer";
 import Products from "./pages/ProductsCategory/products";
 import About from "./pages/About/about";
 import Contact from "./pages/Contact/contact";
-import Login from "./pages/Authentication/Login/login";
-import Registration from "./pages/Authentication/Registration/registration";
 
 import "./App.css";
 
 const App = () => {
-    const [showModal, setShowModal] = useState(false);
-    const [showModalRegistration, setShowModalRegistration] = useState(false);
 
-    useEffect(() => {
-        if(showModal || showModalRegistration)
-            document.body.style.overflow = 'hidden';
-        else
-            document.body.style.overflow = 'auto';
-
-    }, [showModal, showModalRegistration]);
-
-    const closeModal = () => {
-        setShowModal(false);
-        setShowModalRegistration(false);
-    }
-    const showLoginModal = () => {
-        setShowModal(true);
-    }
-    const openRegistrationModal = () => {
-        setShowModal(false);
-        setShowModalRegistration(true);
-    }
-    const closeRegisterModal = () => {
-        setShowModal(true);
-        setShowModalRegistration(false);
-    }
   return (
       <Router>
-          {showModal && <Login closeModal={closeModal} openRegistrationModal={openRegistrationModal} />}
-          {showModalRegistration && <Registration closeModal={closeModal} closeRegisterModal={closeRegisterModal}  />}
-          <Header showLoginModal={showLoginModal} />
+          <Header/>
               <section>
                   <NavBar />
                   <main className="container">

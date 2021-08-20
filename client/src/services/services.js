@@ -1,3 +1,27 @@
+import axios from "axios";
+
+const config = {
+    headers: {
+        'Content-type': 'application/json'
+    }
+}
+
+const getApi = (url) => {
+    return axios.get('api' + url);
+}
+
+const postApi = (url, data) => {
+    return axios.post('api' + url, data, config);
+}
+
+export const getUsers = () => {
+    return getApi('/users');
+}
+
+export const addUsers = (data) => {
+    return postApi('/users', data);
+}
+
 export const fakeData = [
     {
         _id: 1,
@@ -14,3 +38,4 @@ export const fakeData = [
         imagePath: "https://static.wixstatic.com/media/ca2a5a_19537e9dd2f74766a7f561eca2e744ee.jpg/v1/fill/w_263,h_263,al_c,q_80,usm_0.66_1.00_0.01/ca2a5a_19537e9dd2f74766a7f561eca2e744ee.webp"
     },
 ]
+

@@ -61,7 +61,7 @@ input {
 .errorMessage {
   display: block;
   padding-top: 4px;
-  color: #ff3d3d;
+  color: #ff3d3d !important;
   text-align: left;
   font-size: 12px;
 }
