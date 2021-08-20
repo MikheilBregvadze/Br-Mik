@@ -22,19 +22,25 @@ const authUser = asyncHandler(async (req, res) => {
 })
 
 const registerUser = asyncHandler(async (req, res) => {
-    const { name, lastname, email, password } = req.body;
-
+    const { name, lastname, email, password, terms, confirm_password } = req.body;
+    console.log(req.body)
     const userExists = await User.findOne({ email });
 
     if (userExists) {
         res.json({ status: 400, errorMessage: 'User already exists' });
         throw new Error('User already exists');
+    } else if (password !== confirm_password) {
+        res.json({ status: 400, errorMessage: "Password don't match !" });
+    } else if (!terms) {
+        res.json({ status: 400, errorMessage: "Accept terms required!" });
     }
+
     const user = await User.create({
         name,
         lastname,
         email,
-        password
+        password,
+        terms
     });
 
     if(user) {
@@ -43,6 +49,7 @@ const registerUser = asyncHandler(async (req, res) => {
             name: user.name,
             lastname: user.lastname,
             email: user.email,
+            terms: user.terms,
             isAdmin: user.isAdmin,
             token: generateToken(user._id)
         })
@@ -57,8 +64,20 @@ const getUsers = asyncHandler(async (req, res) => {
     res.json(users);
 })
 
+const getUserById = asyncHandler(async (req, res) => {
+    const user = await User.findById(req.params.id).select('-password');
+    if(user) {
+        res.json(user);
+    } else {
+        res.status(404);
+        throw new Error('User not found');
+    }
+    res.json(user);
+})
+
 module.exports = {
     authUser,
     registerUser,
-    getUsers
+    getUsers,
+    getUserById
 };

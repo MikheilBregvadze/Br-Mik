@@ -8,7 +8,7 @@ import {consoleLog, setItemToLocalStorage} from "../../../services/common";
 import style from "./registration.module.css";
 import 'react-toastify/dist/ReactToastify.css';
 
-const Registration = ({closeModal, closeRegisterModal}) => {
+const Registration = ({closeModal, closeRegisterModal, authenticatedClient}) => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [error, setError] = useState('');
     const onSubmit = data => {
@@ -16,8 +16,11 @@ const Registration = ({closeModal, closeRegisterModal}) => {
             .then(res => {
                 if(res.data.status === 400) {
                     setError(res.data.errorMessage);
-                } else{
+                } else {
                     setItemToLocalStorage('accessToken', res.data.token);
+                    authenticatedClient();
+                    closeRegisterModal();
+                    authenticatedClient(res.data._id);
                 }
             })
             .catch(error => {
@@ -113,14 +116,14 @@ const Registration = ({closeModal, closeRegisterModal}) => {
                     <label htmlFor="checkbox" className={style.container}>This site is protected by reCAPTCHA and the Google
                         <input
                             id="checkbox"
-                            name="checkbox"
+                            name="terms"
                             type="checkbox"
-                            {...register("checkbox", { required: true })}
+                            {...register("terms", { required: true })}
                         />
                         <span className={style.checkmark} />
                     </label>
                     </div>
-                    {errors.checkbox?.type === 'required' && <span className='errorMessage'>Accept Terms & Condition</span>}
+                    {errors.terms?.type === 'required' && <span className='errorMessage'>Accept Terms & Condition</span>}
                 </div>
                 <button className={style.button} type="submit">Sign Up</button>
                 <p>Already have an account? <span onClick={closeRegisterModal} >Log In</span></p>

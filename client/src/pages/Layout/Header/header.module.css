@@ -25,6 +25,7 @@
 }
 
 .cartParent,
+.userMenu,
 .loginParent {
     display: flex;
     align-items: center;
@@ -32,6 +33,7 @@
     font-family: Light;
 }
 
+.userMenu,
 .loginParent {
     cursor: pointer;
     color: rgb(196, 88, 88);
@@ -40,13 +42,35 @@
 .loginParent:hover span {
     opacity: .6;
 }
-
+.userMenu span,
 .loginParent span {
     margin: 0 25px 0 10px;
 }
 
 .cartParent {
     position: relative;
+}
+
+.userMenu {
+    position: relative;
+}
+
+.userMenu ul {
+    opacity: 0;
+    position: absolute;
+    top: 28px;
+    z-index: 5;
+    left: 37px;
+    transition: all .2s;
+}
+
+.showDropdown {
+    opacity: 1 !important;
+    top: 41px !important;
+}
+
+.userMenu ul li {
+    list-style: none;
 }
 
 .cartCount {

@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import Login from "../Authentication/Login/login";
 import Registration from "../Authentication/Registration/registration";
 
-const Authentication = ({showModalLogin, closeModalLoginModal}) => {
+const Authentication = ({showModalLogin, closeModalLoginModal, authenticatedClient}) => {
     const [showModal, setShowModal] = useState(false);
     const [showModalRegistration, setShowModalRegistration] = useState(false);
     useEffect(() => {
@@ -23,16 +23,22 @@ const Authentication = ({showModalLogin, closeModalLoginModal}) => {
         setShowModal(false);
         setShowModalRegistration(true);
     }
-    const closeRegisterModal = () => {
-        setShowModal(true);
+    const closeModalAfterLogin = () => {
+        setShowModal(false);
         setShowModalRegistration(false);
     }
     return <>
-        {showModalLogin && <Login closeModal={closeModal} openRegistrationModal={openRegistrationModal} />}
+        {showModalLogin &&
+        <Login
+            closeModal={closeModal}
+            authenticatedClient={authenticatedClient}
+            openRegistrationModal={openRegistrationModal} />
+        }
         {showModalRegistration &&
         <Registration
             closeModal={closeModal}
-            closeRegisterModal={closeRegisterModal}
+            closeRegisterModal={closeModalAfterLogin}
+            authenticatedClient={authenticatedClient}
         />}
     </>
 }

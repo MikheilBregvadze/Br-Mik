@@ -1,4 +1,5 @@
 import axios from "axios";
+import {getItemFromLocalStorage} from "./common";
 
 const config = {
     headers: {
@@ -14,12 +15,30 @@ const postApi = (url, data) => {
     return axios.post('api' + url, data, config);
 }
 
+
+export function authorizedGet(url) {
+    let accessToken = getItemFromLocalStorage('accessToken');
+    return axios.get('api' + url,{
+        headers: {
+            'Authorization': `Bearer ${accessToken}`
+        }
+    })
+}
+
 export const getUsers = () => {
     return getApi('/users');
 }
 
 export const addUsers = (data) => {
     return postApi('/users', data);
+}
+
+export const loginUser = (data) => {
+    return postApi('/users/login', data);
+}
+
+export const getUser = (_id) => {
+    return authorizedGet(`/users/${_id}`);
 }
 
 export const fakeData = [

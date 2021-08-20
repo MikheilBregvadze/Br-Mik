@@ -1,13 +1,25 @@
 import React from "react";
 import Modal from "../../../components/Modal/modal";
 import { useForm } from "react-hook-form";
+import {loginUser} from "../../../services/services";
+import {consoleLog, setItemToLocalStorage} from "../../../services/common";
 
 import style from "./login.module.css";
 
-const Login = ({closeModal, openRegistrationModal}) => {
+const Login = ({closeModal, openRegistrationModal, authenticatedClient}) => {
     const { register, handleSubmit, formState: { errors } } = useForm();
 
-    const onSubmit = data => console.log(data);
+    const onSubmit = data => {
+        loginUser(data)
+            .then(res => {
+                setItemToLocalStorage('accessToken', res.data.token);
+                authenticatedClient(res.data._id);
+                closeModal();
+            })
+            .catch(error => {
+                consoleLog(error);
+            })
+    }
 
     return <Modal closeModal={closeModal}>
         <div className={style.content}>
@@ -16,6 +28,7 @@ const Login = ({closeModal, openRegistrationModal}) => {
                 <div className={style.inputGroup}>
                     <label htmlFor="email">Email</label>
                     <input
+                        className={errors.email?.type === 'required' ? "errorInput" : ''}
                         type="email"
                         name="email"
                         {...register("email", { required: true })}
@@ -25,6 +38,7 @@ const Login = ({closeModal, openRegistrationModal}) => {
                 <div className={style.inputGroup}>
                     <label htmlFor="password">Password</label>
                     <input
+                        className={errors.password?.type === 'required' ? "errorInput" : ''}
                         type="password"
                         name="password"
                         {...register("password", { required: true })}
